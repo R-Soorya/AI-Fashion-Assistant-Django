@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardrobe & Collections</title>
+    <link rel="stylesheet" href="{% static 'wardrobe_and_collections.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Wardrobe Assistant</h1>
+    </header>
+
+    <div class="container">
+        <!-- Left Section: Collections -->
+        <div class="left-section">
+            <h2>Your Collections</h2>
+            <div class="image-grid">
+                {% for outfit in outfits %}
+                <div class="image-card">
+                    <img src="{{ outfit.image.url }}" alt="{{ outfit.name }}">
+                    
+                    <!-- Delete button form -->
+                    <form action="{% url 'wardrobe:delete-outfit' outfit.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Right Section: Wardrobe Upload -->
+        <div class="right-section">
+            <div class="upload-content">
+                <h2>Wardrobe</h2>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="image" accept="image/*" multiple>
+                    <button type="submit">Upload</button>
+                </form>
+                
+                <a href="{% url 'wardrobe:plan-your-outfit' %}">
+                    <button type='button' class='button'>Plan Your Outfit</button>
+                </a>
+
+                {% if invalid_extensions %}
+                <div class="invalid-extensions">
+                    <h3>Invalid Files</h3>
+                    <ul>
+                        {% for file in invalid_extensions %}
+                        <li>{{ file }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

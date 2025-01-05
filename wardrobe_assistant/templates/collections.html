@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfits</title>
+    <link rel="stylesheet" href="{% static 'collections.css' %}">
+    
+</head>
+<body>
+    <header>
+    <h1>Your Collections</h1>
+    </header>
+    <div class="image-container">
+        {% for outfit in outfits %}
+        <div class="image-card">
+            <img src="{{ outfit.image.url }}" alt="{{ outfit.name }}">
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

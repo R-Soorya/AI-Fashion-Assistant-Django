@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Fashion Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+<body>
+
+<header>
+    <h1>AI Fashion Assistant</h1>
+</header>
+
+<h2>Get Your Perfect Look!</h2>
+<div class="container">
+    
+
+    <!-- Links to second and third pages -->
+    <a href="{% url 'outfit:outfit-assistant' %}" class="button">Fashion For You</a>
+    <a href="{% url 'wardrobe:wardrobe-assistant' %}" class="button">Your Perfect Wardrobe</a>
+</div>
+
+</body>
+</html>

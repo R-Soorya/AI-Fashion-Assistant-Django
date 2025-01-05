@@ -1,0 +1,56 @@
+/* General body styles */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 0;
+}
+
+/* Consistent header styles */
+header {
+    text-align: center;
+    background: linear-gradient(to bottom, #007bff, #0056b3); /* Gradient direction adjusted */
+    color: #fff;
+    width: 100%;
+    padding: 20px;
+    height: 80px;
+    background-position: center; /* Ensures the gradient is centered */
+}
+
+/* Centering content in the container */
+.container {
+    display: flex;
+    justify-content: space-evenly; /* Aligns buttons to left and right */
+    align-items: flex-start;
+    width: 100%; /* Make container full width */
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+/* Button styles */
+.button {
+    width: 200px;  /* Square shape */
+    height: 200px; /* Square shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, #7bb5f2, #0056b3);  /* Centered gradient */
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;  /* Smooth transition for multiple properties */
+    font-size: 20px;  /* Adjust font size to fit in the square */
+    
+    /* Adding shadow to the button */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);  /* Horizontal, Vertical, Blur, and Shadow color */
+}
+
+/* Hover effect */
+.button:hover {
+    background: linear-gradient(to bottom right, #0056b3, #7bb5f2);  /* Reversed gradient on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);  /* Stronger shadow on hover */
+    transform: translateY(-4px);  /* Lifting effect on hover */
+}

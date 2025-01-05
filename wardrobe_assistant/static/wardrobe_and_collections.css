@@ -1,0 +1,137 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background: linear-gradient(to bottom, #007bff, #0056b3);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+/* Left Section (Collections) */
+.left-section {
+    flex: 1;
+    max-width: 45%;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    height: 500px; /* Fixed height */
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-gap: 1rem;
+}
+
+.image-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.5rem;
+    overflow: hidden;
+    position: relative; /* For positioning delete button */
+}
+
+.image-card img {
+    max-width: 100px; /* Fixed size */
+    max-height: 100px; /* Fixed size */
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.image-card p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Delete Button */
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+}
+
+.image-card:hover .delete-button {
+    display: block; /* Show button on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-section, .right-section {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Right Section */
+.right-section {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center;    /* Centers content vertically */
+    padding: 20px;
+    border-left: 1px solid #ccc; /* Optional: Add a separator between sections */
+}
+
+.upload-content {
+    text-align: center;
+    width: 80%; /* Optional: Adjust width if needed */
+}
+
+.upload-content h2 {
+    margin-bottom: 15px;
+}
+
+.upload-content form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-content input,
+.upload-content button {
+    margin: 10px 0;
+}
+
+button {
+    background: linear-gradient(to bottom, #7bb5f2, #0056b3);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: linear-gradient(to bottom right, #0056b3, #7bb5f2);
+}

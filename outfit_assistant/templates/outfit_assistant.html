@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Based Virtual Fashion Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'outfit_assistant.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Fashion Assistant</h1>
+    </header>
+    <main>
+
+        <!-- Arranging by Features Section -->
+        <form action="{% url 'outfit:outfit-assistant' %}" method="POST">
+            {% csrf_token %}
+            <section class="features">
+                <!-- Gender Selection -->
+                <div class="feature">
+                    <h3>Gender</h3>
+                    <select name="gender">
+                        <option value="">Select Gender</option>
+                        <option value="men" {% if gender == 'men' %}selected{% endif %}>Men</option>
+                        <option value="women" {% if gender == 'women' %}selected{% endif %}>Women</option>
+                        <option value="children" {% if gender == 'children' %}selected{% endif %}>Children</option>
+                    </select>
+                </div>
+        
+                <!-- Body Shape Selection -->
+                <div class="feature">
+                    <h3>Body Shape</h3>
+                    <select name="body_shape">
+                        <option value="">Select Body Shape</option>
+                        <option value="muscular" {% if body_shape == 'muscular' %}selected{% endif %}>Muscular</option>
+                        <option value="slim" {% if body_shape == 'slim' %}selected{% endif %}>Slim</option>
+                        <option value="fat" {% if body_shape == 'fat' %}selected{% endif %}>Fat</option>
+                    </select>
+                </div>
+        
+                <!-- Skin Tone Selection -->
+                <div class="feature">
+                    <h3>Skin Tone</h3>
+                    <select name="skin_tone">
+                        <option value="">Select Skin Tone</option>
+                        <option value="fair" {% if skin_tone == 'fair' %}selected{% endif %}>Fair</option>
+                        <option value="light" {% if skin_tone == 'light' %}selected{% endif %}>Light</option>
+                        <option value="dark" {% if skin_tone == 'dark' %}selected{% endif %}>Dark</option>
+                    </select>
+                </div>
+        
+                <!-- Height Selection -->
+                <div class="feature">
+                    <h3>Height</h3>
+                    <select name="height">
+                        <option value="">Select Height</option>
+                        <option value="short" {% if height == 'short' %}selected{% endif %}>Short (Under 5'4")</option>
+                        <option value="average" {% if height == 'average' %}selected{% endif %}>Average (5'4" - 5'7")</option>
+                        <option value="tall" {% if height == 'tall' %}selected{% endif %}>Tall (Over 5'7")</option>
+                    </select>
+                </div>
+        
+                <!-- Dress Type Selection -->
+                <div class="feature">
+                    <h3>Dress Type</h3>
+                    <select name="dress_type">
+                        <option value="">Select Dress Type</option>
+                        <option value="formals" {% if dress_type == 'formals' %}selected{% endif %}>Formals</option>
+                        <option value="casuals" {% if dress_type == 'casuals' %}selected{% endif %}>Casuals</option>
+                        <option value="festival_wear" {% if dress_type == 'festival_wear' %}selected{% endif %}>Festival Wear</option>
+                    </select>
+                </div>
+            </section>
+        
+            <!-- Proceed Button -->
+            <button type="submit" class="proceed-button">Proceed</button>
+        </form>
+
+        {% if final_response %}
+            <h2>Recommended Outfits</h2>
+            <section class="features">
+                {% for item in final_response %}
+                    <div class="feature">
+                        {% for top, bottom in item.items %}
+                            <p><strong>Top:</strong> {{ top }}</p>
+                            <p><strong>Bottom:</strong> {{ bottom }}</p>
+
+                            <div class="image-display-container">
+                                <div class="image-row">
+                                    <!-- Top image -->
+                                    <img src="{% static 'color/top/'|add:top|stringformat:'s'|add:'.png' %}" 
+                                         alt="Top Color Image" class="outfit-image">
+                                    <!-- Bottom image -->
+                                    <img src="{% static 'color/bottom/'|add:bottom|stringformat:'s'|add:'.png' %}" 
+                                         alt="Bottom Color Image" class="outfit-image">
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </section>
+        {% endif %}
+
+
+    
+    </main>
+</body>
+</html>

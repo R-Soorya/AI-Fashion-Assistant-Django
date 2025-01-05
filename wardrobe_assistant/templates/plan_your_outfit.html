@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfit Dashboard</title>
+    <link rel="stylesheet" href="{% static 'plan_your_outfit.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Outfit Dashboard</h1>
+    </header>
+
+    <main>
+        <!-- Generate and View Outfit Plan Section -->
+        <section class="generate-section">
+            <h2>Outfit Plan</h2>
+            
+            <form action="{% url 'wardrobe:plan-your-outfit' %}" method="GET">
+                <button type="submit" name="action" value='generate' class="generate-button">Generate Plan</button>
+            </form>
+        </section>
+
+        <!-- Display Generated Plans -->
+        <section class="plans-section">
+            {% if pairs %}
+            <div class="image-container">
+                {% for pair in pairs %}
+                <div class="image-card">
+                    <div class="item">
+                        <img src="{{ pair.top.image.url }}" alt="{{ pair.top.name }}">
+                    </div>
+                    <div class="item">
+                        <img src="{{ pair.bottom.image.url }}" alt="{{ pair.bottom.name }}">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>No outfit plans available. Click "Generate Plan" to create one.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

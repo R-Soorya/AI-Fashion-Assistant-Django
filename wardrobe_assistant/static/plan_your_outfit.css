@@ -1,0 +1,86 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    background: linear-gradient(to bottom, #007bff, #0056b3);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Main Section */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Generate Section */
+.generate-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.generate-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.generate-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.generate-button:hover {
+    background-color: #0056b3;
+}
+
+/* Plans Section */
+.plans-section h2 {
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.image-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 200px;
+}
+
+.image-card:hover {
+    transform: translateY(-5px);
+}
+
+.item {
+    margin-bottom: 15px;
+}
+
+.image-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
