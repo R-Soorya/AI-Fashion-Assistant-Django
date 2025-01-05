@@ -1,0 +1,9 @@
+django
+google-generativeai
+transformers
+pillow
+torch
+opencv-python
+scikit-learn
+pandas
+sentence-transformers
