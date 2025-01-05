@@ -109,11 +109,3 @@ Incorporate accessory suggestions.
 Provide outfit suggestions based on weather conditions.
 
 Expand the recommendation system to include dresses and footwear.
-
-
-Soorya R.AI and Backend DeveloperGitHub: Soorya03
-
-License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
